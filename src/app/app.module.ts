@@ -4,10 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { App_Courses } from './components/courses/App_Courses';
+import { App_Subscription } from './components/subscription/App_Subscription';
+import { App_Commons_Autogrow } from './components/commons/App_Commons_Autogrow'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    App_Courses,
+    App_Subscription,
+    App_Commons_Autogrow
   ],
   imports: [
     BrowserModule,
