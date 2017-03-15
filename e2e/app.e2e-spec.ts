@@ -1,10 +1,10 @@
-import { Ng2Page } from './app.po';
+import { DeamonPage } from './app.po';
 
-describe('ng2 App', function() {
-  let page: Ng2Page;
+describe('Deamon App', function() {
+  let page: DeamonPage;
 
   beforeEach(() => {
-    page = new Ng2Page();
+    page = new DeamonPage();
   });
 
   it('should display message saying app works', () => {
