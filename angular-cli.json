@@ -17,9 +17,6 @@
       "test": "test.ts",
       "tsconfig": "tsconfig.json",
       "prefix": "app",
-      "styles": [
-        "styles.css"
-      ],
       "scripts": [],
       "environments": {
         "source": "environments/environment.ts",
@@ -49,7 +46,7 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
+    "styleExt": "less",
     "prefixInterfaces": false,
     "inline": {
       "style": false,
