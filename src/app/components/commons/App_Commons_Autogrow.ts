@@ -1,4 +1,7 @@
-import { Directive, ElementRef, Renderer } from '@angular/core'
+import { Directive, ElementRef, Renderer, Input, OnInit } from '@angular/core'
+
+const DEFAULT_WIDTH = '200px';
+const GROWN_WIDTH = '400px';
 
 @Directive({
     selector    : '[app-commons-autogrow]',
@@ -7,14 +10,21 @@ import { Directive, ElementRef, Renderer } from '@angular/core'
         '(blur)'    : 'shrink()'
     }
 })
-export class App_Commons_Autogrow {
+export class App_Commons_Autogrow implements OnInit {
+
+    @Input('width') defaultWidth: string;
+    @Input('app-commons-autogrow') grownWidth: string;
+
     constructor(private el: ElementRef, private renderer: Renderer) {
-        
+        //noop
+    }
+    ngOnInit() {
+        this.shrink();
     }
     grow() {
-        this.renderer.setElementStyle(this.el, 'width', '200');
+        this.el.nativeElement.style.width = this.grownWidth || GROWN_WIDTH;
     }
     shrink() {
-        this.renderer.setElementStyle(this.el, 'width', '100');
+        this.el.nativeElement.style.width = this.defaultWidth || DEFAULT_WIDTH;
     }
 }

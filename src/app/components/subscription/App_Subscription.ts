@@ -4,7 +4,7 @@ import { Component } from '@angular/core'
     selector    : 'app-subscription',
     template    : `
         <h2>Subscribe</h2>
-        <input app-commons-autogrow/>
+        <input app-commons-autogrow="300px" width="100px"/>
     `
 })
 export class App_Subscription {
