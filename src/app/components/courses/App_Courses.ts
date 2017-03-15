@@ -4,6 +4,7 @@ import { App_Courses_Fetcher } from './services/App_Courses_Fetcher'
 @Component({
     selector    : 'app-courses',
     providers   : [App_Courses_Fetcher],
+    styleUrls   : ['./less/App_Courses.less'],
     template    : `
         <h2>Cources</h2>
         <ul>
