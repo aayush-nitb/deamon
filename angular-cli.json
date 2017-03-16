@@ -17,7 +17,13 @@
       "test": "test.ts",
       "tsconfig": "tsconfig.json",
       "prefix": "app",
-      "scripts": [],
+      "styles": [
+          "../node_modules/semantic-ui-css/semantic.min.css"
+      ],
+      "scripts": [
+          "../node_modules/jquery/dist/jquery.min.js",
+          "../node_modules/semantic-ui-css/semantic.min.js"
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
