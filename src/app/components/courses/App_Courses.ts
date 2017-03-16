@@ -6,12 +6,7 @@ import { Model_Course } from 'app/models/courses/Model_Course'
     selector    : 'app-courses',
     styleUrls   : ['./less/App_Courses.less'],
     providers   : [App_Courses_Fetcher],
-    template    : `
-        <h2>Cources</h2>
-        <ul>
-            <li *ngFor=" let course of courses"><a [routerLink]="['/course', course.name]">{{course.start}} <label>{{course.name}}</label></a></li>
-        </ul>
-    `
+    templateUrl : './templates/App_Courses.html'
 })
 export class App_Courses {
     private courses: Model_Course[];
