@@ -4,12 +4,12 @@ import { Model_Course } from 'app/models/courses/Model_Course'
 
 @Component({
     selector    : 'app-courses',
-    providers   : [App_Courses_Fetcher],
     styleUrls   : ['./less/App_Courses.less'],
+    providers   : [App_Courses_Fetcher],
     template    : `
         <h2>Cources</h2>
         <ul>
-            <li *ngFor=" let course of courses"><a routerLink="/course/{{course.name}}">{{course.start}} <label>{{course.name}}</label></a></li>
+            <li *ngFor=" let course of courses"><a [routerLink]="['/course', course.name]">{{course.start}} <label>{{course.name}}</label></a></li>
         </ul>
     `
 })
