@@ -1,13 +1,22 @@
+import { Model_Course } from 'app/models/courses/Model_Course'
+
+const COURSES: Model_Course[] = [
+    { start: '00:00', name: 'What is Angular and what you can do with it' },
+    { start: '03:31', name: 'Architecture of Angular 2 apps' },
+    { start: '08:23', name: 'Getting the tools' },
+    { start: '09:40', name: 'Your first Angular 2 app' },
+    { start: '18:54', name: 'Angular 2.0 with TypeScript for Beginners (Udemy course)' },
+    { start: '19:50', name: 'Creating components' },
+    { start: '36:39', name: 'Dependency injection' },
+    { start: '42:25', name: 'Exercise' },
+    { start: '53:46', name: 'Discount coupon to get Angular 2 course on Udemy' }
+];
+
 export class App_Courses_Fetcher {
-    getCourses(): string[] {
-        return ["00:00 What is Angular and what you can do with it",
-            "03:31 Architecture of Angular 2 apps",
-            "08:23 Getting the tools",
-            "09:40 Your first Angular 2 app",
-            "18:54 Angular 2.0 with TypeScript for Beginners (Udemy course)",
-            "19:50 Creating components",
-            "36:39 Dependency injection",
-            "42:25 Exercise",
-            "53:46 Discount coupon to get Angular 2 course on Udemy"];
+    getCourses(): Model_Course[] {
+        return COURSES;
+    }
+    getCourse(name: String): Model_Course {
+        return COURSES.find(course => course.name === name);
     }
 }

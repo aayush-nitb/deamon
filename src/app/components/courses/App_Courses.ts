@@ -1,19 +1,15 @@
 import { Component } from '@angular/core'
 import { App_Courses_Fetcher } from './services/App_Courses_Fetcher'
+import { Model_Course } from 'app/models/courses/Model_Course'
 
 @Component({
     selector    : 'app-courses',
-    providers   : [App_Courses_Fetcher],
     styleUrls   : ['./less/App_Courses.less'],
-    template    : `
-        <h2>Cources</h2>
-        <ul>
-            <li *ngFor=" let course of courses">{{course}}</li>
-        </ul>
-    `
+    providers   : [App_Courses_Fetcher],
+    templateUrl : './templates/App_Courses.html'
 })
 export class App_Courses {
-    courses;
+    private courses: Model_Course[];
 
     constructor(fetcher: App_Courses_Fetcher) {
         this.courses = fetcher.getCourses();
