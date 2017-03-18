@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms'
 import { HttpModule } from '@angular/http'
 
 import { Module_Router } from './modules/Module_Router'
+import { Module_Primeng } from './modules/Module_Primeng'
 
 import { App_Index } from 'app/pages/App_Index'
 import { App_Course } from 'app/pages/App_Course'
@@ -32,7 +33,8 @@ import { App_Navigation } from './components/navigation/App_Navigation'
     BrowserModule,
     FormsModule,
     HttpModule,
-    Module_Router
+    Module_Router,
+    Module_Primeng
   ],
   providers: [],
   bootstrap: [App_Root]
