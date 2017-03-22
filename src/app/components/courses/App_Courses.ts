@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { App_Courses_Fetcher } from './services/App_Courses_Fetcher'
 import { Model_Course } from 'app/models/courses/Model_Course'
 
@@ -8,10 +8,20 @@ import { Model_Course } from 'app/models/courses/Model_Course'
     providers   : [App_Courses_Fetcher],
     templateUrl : './templates/App_Courses.html'
 })
-export class App_Courses {
+export class App_Courses implements OnInit {
     private courses: Model_Course[];
+    private loading: boolean;
 
-    constructor(fetcher: App_Courses_Fetcher) {
-        this.courses = fetcher.getCourses();
+    constructor(private fetcher: App_Courses_Fetcher) {
+        this.loading = true;
+    }
+    ngOnInit() {
+        this.fetcher.getCourses().subscribe(courses => {
+            this.courses = courses;
+        }, error => {
+            //noop
+        }, () => {
+            this.loading = false;
+        });
     }
 }

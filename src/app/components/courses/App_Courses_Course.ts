@@ -13,13 +13,20 @@ import 'rxjs/add/operator/switchMap';
 })
 export class App_Courses_Course implements OnInit {
     private course: Model_Course;
+    private loading: boolean;
 
     constructor(private fetcher: App_Courses_Fetcher, private route: ActivatedRoute) {
-        //noop
+        this.loading = true;
     }
     ngOnInit() {
         this.route.params.subscribe(params => {
-            this.course = this.fetcher.getCourse(params['name']);
+            this.fetcher.getCourse(params['name']).subscribe(course => {
+                this.course = course;
+            }, error => {
+                //noop
+            }, () => {
+                this.loading = false;
+            });
         });
     }
 }
