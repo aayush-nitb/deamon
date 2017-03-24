@@ -24,10 +24,17 @@ export class App_Commons_Background implements OnInit {
             'top': 0,
             'right': 0,
             'bottom': 0,
-            'background': `url(${this.url}) no-repeat`,
+            'background-image': `url(${this.url})`,
+            'background-repeat': 'no-repeat',
             'background-size': this.size || '100% 100%',
             'opacity': this.opacity || 1,
             'z-index': -1
         });
+        if (this.size) {
+            Object.assign(background.style, {
+                'background-position-x': '50%',
+                'background-position-y': '50%'
+            });
+        }
     }
 }

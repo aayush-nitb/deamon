@@ -12,6 +12,7 @@ import { App_Course } from 'app/pages/App_Course'
 import { App_Root } from './components/commons/App_Root'
 import { App_Commons_Autogrow } from './components/commons/App_Commons_Autogrow'
 import { App_Commons_Background } from './components/commons/App_Commons_Background'
+import { App_Commons_Loader } from './components/commons/App_Commons_Loader'
 import { App_Courses } from './components/courses/App_Courses'
 import { App_Courses_Course } from './components/courses/App_Courses_Course'
 import { App_Subscription } from './components/subscription/App_Subscription'
@@ -24,6 +25,7 @@ import { App_Navigation } from './components/navigation/App_Navigation'
     App_Root,
     App_Commons_Autogrow,
     App_Commons_Background,
+    App_Commons_Loader,
     App_Courses,
     App_Courses_Course,
     App_Subscription,
