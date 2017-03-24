@@ -1,9 +1,10 @@
-<h2>Cources</h2>
-<ul>
-    <li *ngFor=" let course of courses">
-        <a [routerLink]="['/course', course.name]">
-            {{course.start}}
-            <label>{{course.name}}</label>
-        </a>
-    </li>
-</ul>
+<p-panel header="Courses">
+    <ul app-commons-background="assets/courses/books.jpeg" opacity="0.2">
+        <li *ngFor=" let course of courses">
+            <a [routerLink]="['/course', course.name]">
+                {{course.start}}
+                <label>{{course.name}}</label>
+            </a>
+        </li>
+    </ul>
+</p-panel>

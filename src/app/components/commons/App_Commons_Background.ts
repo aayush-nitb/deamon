@@ -6,6 +6,7 @@ import { Directive, ElementRef, Renderer, Input, OnInit } from '@angular/core'
 export class App_Commons_Background implements OnInit {
 
     @Input('opacity') opacity: string;
+    @Input('size') size: string;
     @Input('app-commons-background') url: string;
 
     constructor(private el: ElementRef, private renderer: Renderer) {
@@ -14,7 +15,8 @@ export class App_Commons_Background implements OnInit {
     ngOnInit() {
         let background = this.renderer.createElement(this.el.nativeElement, 'div');
         Object.assign(this.el.nativeElement.style, {
-            'position': 'relative'
+            'position': 'relative',
+            'z-index': 0
         });
         Object.assign(background.style, {
             'position': 'absolute',
@@ -23,9 +25,9 @@ export class App_Commons_Background implements OnInit {
             'right': 0,
             'bottom': 0,
             'background': `url(${this.url}) no-repeat`,
-            'background-size': '100% 100%',
+            'background-size': this.size || '100% 100%',
             'opacity': this.opacity || 1,
-            'z-index': '-1'
+            'z-index': -1
         });
     }
 }

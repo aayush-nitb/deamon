@@ -3,7 +3,8 @@ import * as primeng from 'primeng/primeng'
 
 const Components = [
     primeng.ButtonModule,
-    primeng.InputTextModule
+    primeng.InputTextModule,
+    primeng.PanelModule
 ];
 
 @NgModule({
