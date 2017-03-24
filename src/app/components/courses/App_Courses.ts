@@ -13,15 +13,12 @@ export class App_Courses implements OnInit {
     private loading: boolean;
 
     constructor(private fetcher: App_Courses_Fetcher) {
-        this.loading = true;
+        this.fetcher.change.subscribe(model => {
+            this.loading = model.loading;
+            this.courses = model.data;
+        });
     }
     ngOnInit() {
-        this.fetcher.getCourses().subscribe(courses => {
-            this.courses = courses;
-        }, error => {
-            //noop
-        }, () => {
-            this.loading = false;
-        });
+        this.fetcher.getCourses();
     }
 }
