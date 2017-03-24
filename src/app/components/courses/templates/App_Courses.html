@@ -1,10 +1,12 @@
 <p-panel header="Courses">
-    <ul app-commons-background="assets/courses/books.jpeg" opacity="0.2">
-        <li *ngFor=" let course of courses">
-            <a [routerLink]="['/course', course.name]">
-                {{course.start}}
-                <label>{{course.name}}</label>
-            </a>
-        </li>
-    </ul>
+    <app-commons-loader [state]="loading">
+        <ul app-commons-background="assets/courses/books.jpeg" opacity="0.2">
+            <li *ngFor=" let course of courses">
+                <a [routerLink]="['/course', course.name]">
+                    {{course.start}}
+                    <label>{{course.name}}</label>
+                </a>
+            </li>
+        </ul>
+    </app-commons-loader>
 </p-panel>
