@@ -16,14 +16,14 @@ export class App_Courses_Course implements OnInit {
     private loading: boolean;
 
     constructor(private fetcher: App_Courses_Fetcher, private route: ActivatedRoute) {
-        this.fetcher.change.subscribe(model => {
-            this.loading = model.loading;
-            this.course = model.data;
+        this.fetcher.listen('get', dao => {
+            this.loading = dao.loading;
+            this.course = dao.data;
         });
     }
     ngOnInit() {
         this.route.params.subscribe(params => {
-            this.fetcher.getCourse(params['name']);
+            this.fetcher.get(params['name']);
         });
     }
 }
