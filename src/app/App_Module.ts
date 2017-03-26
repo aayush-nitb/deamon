@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { HttpModule } from '@angular/http'
+import { ResourceModule } from 'ng2-resource-rest'
 
 import { Module_Router } from './modules/Module_Router'
 import { Module_Primeng } from './modules/Module_Primeng'
@@ -32,6 +33,7 @@ import { App_Navigation } from './components/navigation/App_Navigation'
     App_Navigation
   ],
   imports: [
+    ResourceModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpModule,

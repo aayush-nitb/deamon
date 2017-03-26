@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core'
     styleUrls  : ['./less/App_Commons_Loader.less']
 })
 export class App_Commons_Loader {
-    @Input('state') loading; 
+    @Input('when') resolved; 
 }

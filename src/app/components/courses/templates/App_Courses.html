@@ -1,6 +1,7 @@
 <p-panel header="Courses">
-    <app-commons-loader [state]="loading">
-        <ul app-commons-background="assets/courses/books.jpeg" opacity="0.2">
+    <app-commons-loader [when]="courses.$resolved">
+        <h3 *ngIf="!courses.length" class="error">Courses not found !</h3>
+        <ul *ngIf="courses.length" app-commons-background="assets/courses/books.jpeg" opacity="0.2">
             <li *ngFor=" let course of courses">
                 <a [routerLink]="['/course', course.name]">
                     {{course.start}}

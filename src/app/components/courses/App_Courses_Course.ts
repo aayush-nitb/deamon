@@ -1,29 +1,25 @@
+import * as _ from 'underscore';
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { App_Courses_Fetcher } from './services/App_Courses_Fetcher'
-import { Model_Course } from 'app/models/courses/Model_Course'
+import { Model_Course, ICourse, IResource } from 'app/models/courses/Model_Course'
 
 import 'rxjs/add/operator/switchMap';
 
 @Component({
     selector    : 'app-courses-course',
     styleUrls   : ['./less/App_Courses_Course.less'],
-    providers   : [App_Courses_Fetcher],
     templateUrl : './templates/App_Courses_Course.html'
 })
 export class App_Courses_Course implements OnInit {
-    private course: Model_Course;
-    private loading: boolean;
+    private course: ICourse & IResource;
 
-    constructor(private fetcher: App_Courses_Fetcher, private route: ActivatedRoute) {
-        this.fetcher.change.subscribe(model => {
-            this.loading = model.loading;
-            this.course = model.data;
-        });
+    constructor(private model: Model_Course, private route: ActivatedRoute) {
+        //noop
     }
     ngOnInit() {
         this.route.params.subscribe(params => {
-            this.fetcher.getCourse(params['name']);
+            this.course = this.model.get({id: params['name']});
+            this.model.resolveOnError(this.course);
         });
     }
 }

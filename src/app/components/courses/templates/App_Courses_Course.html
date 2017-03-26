@@ -1,7 +1,7 @@
-<p-panel header="{{loading? 'Loading...': (course? course.name: 'Error')}}">
-    <app-commons-loader [state]="loading">
-        <h3 class="error" *ngIf="!course">Course not found !</h3>
-        <p app-commons-background="assets/courses/books.jpeg" opacity="0.2" *ngIf="course">
+<p-panel header="{{course.$resolved? (course.name? course.name: 'Error'): 'Loading...'}}">
+    <app-commons-loader [when]="course.$resolved">
+        <h3 *ngIf="!course.name" class="error">Course not found !</h3>
+        <p  *ngIf="course.name" app-commons-background="assets/courses/books.jpeg" opacity="0.2">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
             industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
             scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
