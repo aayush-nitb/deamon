@@ -1,13 +1,21 @@
-<p-panel header="{{course.$resolved? (course.name? course.name: 'Error'): 'Loading...'}}">
-    <app-commons-loader [when]="course.$resolved">
-        <h3 *ngIf="!course.name" class="error">Course not found !</h3>
-        <p  *ngIf="course.name" app-commons-background="assets/courses/books.jpeg" opacity="0.2">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
-            into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
-            release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-            software like Aldus PageMaker including versions of Lorem Ipsum.
-        </p>
+<p-panel>
+    <p-header>
+        <span>{{course.$resolved? (course.name? course.name: 'Error'): 'Loading...'}}</span>
+        <div class="actions">
+            <button pButton class="ui-button-info" (click)="save()"
+                icon="{{editMode? 'fa-save': 'fa-edit'}}"
+                label="{{editMode? 'Save': 'Edit'}}">
+            </button>
+        </div>
+    </p-header>
+    <app-commons-loader [when]="course.$resolved" class="screen">
+        <div *ngIf="!course.name" class="fullscreen flexMiddle">
+            <h3 class="error">Course not found !</h3>
+        </div>
+        <div *ngIf="course.name" class="fullscreen flexMiddle">
+            <p *ngIf="!editMode && course.details" app-commons-background="assets/courses/books.jpeg" opacity="0.2">{{course.details}}</p>
+            <h4 *ngIf="!editMode && !course.details" class="noData">Details not available</h4>
+            <textarea *ngIf="editMode" placeholder="Enter course details here.." [(ngModel)]="course.details"></textarea>
+        </div>
     </app-commons-loader>
 </p-panel>

@@ -4,7 +4,8 @@ import * as primeng from 'primeng/primeng'
 const Components = [
     primeng.ButtonModule,
     primeng.InputTextModule,
-    primeng.PanelModule
+    primeng.PanelModule,
+    primeng.InplaceModule
 ];
 
 @NgModule({

@@ -6,7 +6,9 @@ body, p, ul {
     margin: 0;
     padding: 0;
 }
-.ui-panel .ui-panel-content {
+.ui-panel
+.ui-panel-content,
+.ui-inplace .ui-inplace-display {
     padding: 0;
 }
 .ui-widget-content a {
@@ -18,4 +20,19 @@ body, p, ul {
         color: rgb(0, 0, 0);
         cursor: pointer;
     }
+}
+.screen {
+    position: relative;
+}
+.fullscreen {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+.flexMiddle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

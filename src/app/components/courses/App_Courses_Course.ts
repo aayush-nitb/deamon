@@ -12,6 +12,7 @@ import 'rxjs/add/operator/switchMap';
 })
 export class App_Courses_Course implements OnInit {
     private course: ICourse & IResource;
+    private editMode: boolean;
 
     constructor(private model: Model_Course, private route: ActivatedRoute) {
         //noop
@@ -21,5 +22,12 @@ export class App_Courses_Course implements OnInit {
             this.course = this.model.get({id: params['name']});
             this.model.resolveOnError(this.course);
         });
+    }
+    save() {
+        if (!this.editMode) {
+            this.editMode = true;
+            return;
+        }
+        this.course.$resolved = false;
     }
 }

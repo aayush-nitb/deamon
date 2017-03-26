@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core'
-import { ResourceCRUD, ResourceParams } from 'ng2-resource-rest'
+import { ResourceCRUD, ResourceParams, ResourceModel } from 'ng2-resource-rest'
 import { RequestMethod } from '@angular/http'
 import { Observable } from 'rxjs'
 
+export interface IResource {
+  $resolved?: boolean;
+  $observable?: Observable<any>;
+  $abortRequest?: () => void;
+}
 export interface IQueryInput {
   limit?: string;
   offset?: string;
@@ -10,11 +15,6 @@ export interface IQueryInput {
 export interface ICourseShort {
   name: string;
   start: string;
-}
-export interface IResource {
-  $resolved?: boolean;
-  $observable?: Observable<ICourse>;
-  $abortRequest?: () => void;
 }
 export interface ICourse extends ICourseShort {}
 

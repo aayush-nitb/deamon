@@ -1,10 +1,23 @@
 :host {
     display: block;
 }
-p {
+p, textarea {
     padding: 1rem;
+    resize: none;
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+.noData {
+    color: rgb(150, 150, 150);
+    text-align: center;
 }
 .error {
     color: rgb(255, 0, 0);
     text-align: center;
+}
+p-header {
+    display: flex;
+    justify-content: space-between;
+    line-height: 2rem;
 }
