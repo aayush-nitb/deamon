@@ -1,7 +1,6 @@
-import * as _ from 'underscore';
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { Model_Course, ICourse, IResource } from 'app/models/courses/Model_Course'
+import { Model_Course, ICourse } from 'app/models/courses/Model_Course'
 
 import 'rxjs/add/operator/switchMap';
 
@@ -11,7 +10,7 @@ import 'rxjs/add/operator/switchMap';
     templateUrl : './templates/App_Courses_Course.html'
 })
 export class App_Courses_Course implements OnInit {
-    private course: ICourse & IResource;
+    private course: ICourse;
     private editMode: boolean;
 
     constructor(private model: Model_Course, private route: ActivatedRoute) {
@@ -19,15 +18,15 @@ export class App_Courses_Course implements OnInit {
     }
     ngOnInit() {
         this.route.params.subscribe(params => {
-            this.course = this.model.get({id: params['name']});
-            this.model.resolveOnError(this.course);
+            this.course = this.model.one(params['name']);
         });
     }
     save() {
-        if (!this.editMode) {
+        if (this.editMode) {
+            this.model.$save(this.course);
+            this.model.onSuccess(this.course, () => this.editMode = false);
+        } else {
             this.editMode = true;
-            return;
         }
-        this.course.$resolved = false;
     }
 }
