@@ -2,7 +2,7 @@ import * as _ from 'underscore';
 import { Injectable } from '@angular/core'
 import { ResourceCRUD, ResourceParams, ResourceModel } from 'ng2-resource-rest'
 import { RequestMethod } from '@angular/http'
-import { Observable } from 'rxjs'
+import { Observable } from 'rxjs/Observable'
 
 export interface IResource {
   $resolved?: boolean;
@@ -45,12 +45,15 @@ export class Model_Course extends ResourceCRUD<IQueryInput, ICourseShort, ICours
       });
       return res;
     }
-    $save(model: ICourse): void {
-      model.$resolved = false;
-      let res: ICourse = this.update(_.extend(model, {id: model.name}));
-      this.onError(res, () => {
-        res.$resolved = true;
+    $save(model: ICourse): IResource {
+      model = _.extend(model, {
+        id: model.name,
+        $resolved: false
       });
-      model = res;
+      let res: IResource = this.update(model);
+      this.onError(res, () => {
+        model.$resolved = true;
+      });
+      return res;
     }
 }

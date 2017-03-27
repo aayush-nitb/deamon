@@ -2,9 +2,11 @@
     <p-header>
         <span>{{course.$resolved? (course.name? course.name: 'Error'): 'Loading...'}}</span>
         <div class="actions">
-            <button pButton class="ui-button-info" (click)="save()"
+            <button pButton (click)="save()"
                 icon="{{editMode? 'fa-save': 'fa-edit'}}"
-                label="{{editMode? 'Save': 'Edit'}}">
+                label="{{editMode? 'Save': 'Edit'}}"
+                [disabled]="course.$resolved? null: true"
+                [ngClass]="voltileError? 'ui-button-danger': 'ui-button-info'">
             </button>
         </div>
     </p-header>
