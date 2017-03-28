@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { Model_Course, ICourse, IResource } from 'app/models/courses/Model_Course'
+import { App_Commons_Volatile as volatile } from 'app/components/commons/App_Commons_Volatile'
 
 import 'rxjs/add/operator/switchMap';
 
@@ -12,7 +13,7 @@ import 'rxjs/add/operator/switchMap';
 export class App_Courses_Course implements OnInit {
     private course: ICourse;
     private editMode: boolean;
-    private voltileError: number;
+    private ioError = new volatile();
 
     constructor(private model: Model_Course, private route: ActivatedRoute) {
         //noop
@@ -26,14 +27,12 @@ export class App_Courses_Course implements OnInit {
         if (this.editMode) {
             let action: IResource = this.model.$save(this.course);
             //this.model.onSuccess(action, () => this.editMode = false);
-            this.model.onError(action, () => {
-                if (this.voltileError) clearTimeout(this.voltileError);
-                this.voltileError = setTimeout(() => {
-                    this.voltileError = undefined;
-                }, 5000);
-            });
+            this.model.onError(action, () => this.ioError.set());
         } else {
             this.editMode = true;
         }
+    }
+    setError() {
+
     }
 }

@@ -6,7 +6,7 @@
                 icon="{{editMode? 'fa-save': 'fa-edit'}}"
                 label="{{editMode? 'Save': 'Edit'}}"
                 [disabled]="course.$resolved? null: true"
-                [ngClass]="voltileError? 'ui-button-danger': 'ui-button-info'">
+                [ngClass]="ioError.isAlive()? 'ui-button-danger': 'ui-button-info'">
             </button>
         </div>
     </p-header>
