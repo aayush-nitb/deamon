@@ -26,7 +26,7 @@ export type ICourseList = ICourseShort[] & IResource
 })
 export class Model_Course extends ResourceCRUD<IQueryInput, ICourseShort, ICourse> {
     onSuccess(res: IResource, callback: any): void {
-      res.$observable.subscribe(callback);
+      res.$observable.subscribe(callback, () => {});
     }
     onError(res: IResource, callback: any): void {
       res.$observable.subscribe(null, callback);

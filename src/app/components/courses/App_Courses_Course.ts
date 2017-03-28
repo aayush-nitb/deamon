@@ -26,7 +26,7 @@ export class App_Courses_Course implements OnInit {
     save() {
         if (this.editMode) {
             let action: IResource = this.model.$save(this.course);
-            //this.model.onSuccess(action, () => this.editMode = false);
+            this.model.onSuccess(action, () => this.editMode = false);
             this.model.onError(action, () => this.ioError.set());
         } else {
             this.editMode = true;
